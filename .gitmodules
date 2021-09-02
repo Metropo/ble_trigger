@@ -1,0 +1,3 @@
+[submodule "src/esp32kbd"]
+	path = src/esp32kbd
+	url = https://github.com/T-vK/ESP32-BLE-Keyboard.git
