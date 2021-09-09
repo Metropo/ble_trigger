@@ -1,7 +1,7 @@
 #include "src/esp32kbd/BleKeyboard.h"
 BleKeyboard bleKeyboard("Photobooth trigger", "Metropo", 100);
 
-const int buttonPin = 13;     // the number of the pushbutton pin
+const int buttonPin = 25;     // the number of the pushbutton pin
 const int ledPin =  2;      // the number of the LED pin
 const int buttonIgnoreTime = 1000; // Ignore presses within x milli seconds after first press
 
@@ -23,14 +23,15 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Starting BLE work!");
   bleKeyboard.begin();
+  pinMode(buttonPin, INPUT);
 //  attachInterrupt(buttonPin, TriggerButtonIsr, CHANGE);
   //esp_light_sleep_start();
 }
 
 void loop() {
+  int newButtonState = digitalRead(buttonPin);
   if(bleKeyboard.isConnected()) {
     // read the state of the pushbutton value:
-    int newButtonState = digitalRead(buttonPin);
     if(buttonState != newButtonState)
     {
         buttonState = newButtonState;
