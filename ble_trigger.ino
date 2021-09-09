@@ -29,7 +29,7 @@ void setup() {
 }
 
 void loop() {
-  int newButtonState = digitalRead(buttonPin);
+  int newButtonState = !digitalRead(buttonPin);
   if(bleKeyboard.isConnected()) {
     // read the state of the pushbutton value:
     if(buttonState != newButtonState)
